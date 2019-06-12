@@ -1,0 +1,1 @@
+try whit terminal
