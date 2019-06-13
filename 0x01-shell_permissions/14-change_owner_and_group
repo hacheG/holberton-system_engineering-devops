@@ -1,2 +1,2 @@
-#!/bin/bash
-chown -R --from julien:julien betty:holberton . 
+!/bin/bash
+chown -hR betty:holberton . 
