@@ -1,2 +1,2 @@
 #!/bin/bash
-chown -R --from julien:julien to betty:holberton 
+chown -R --from julien:julien betty:holberton . 
