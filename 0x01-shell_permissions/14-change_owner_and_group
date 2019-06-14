@@ -1,2 +1,2 @@
 !/bin/bash
-sudo chown -hR betty:holberton * /
+sudo chown -R betty:holberton .
