@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#We killed our 4-to_infinity_and_beyond process using ctrl+c
+
+MY_PID=$(ps -ef|grep 4-to_infinity_and_beyond)
+kill -SIGTERM [$MY_PID]
