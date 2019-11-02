@@ -2,6 +2,6 @@
 #killed our 4-to_infinity_and_beyond process using ctrl+c
 #shellcheck disable=SC2034
 
-MY_PID=$(pgrep -f 4-to_infinity_and_beyond)
-kill -SIGTERM [$MY_PID]
+kill="$(pgrep -f 4-to_infinity_and_beyond)"
+#kill -SIGTERM [$MY_PID]
 #killall bash ./4-to_infinity_and_beyond
