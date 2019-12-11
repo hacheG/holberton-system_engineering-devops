@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #bla bla bla
 sudo apt-get update
 sudo apt-get -y install nginx
-echo "holberton school" > /usr/share/nginx/html/index.html
+echo "holberton school" | sudo tee /var/www/html/index.html
 sudo service nginx restart
