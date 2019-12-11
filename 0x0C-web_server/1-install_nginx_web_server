@@ -1,6 +1,6 @@
 #!/bin/env bash
-#bla bla bla
+#bla bla bla hate this forever
 sudo apt-get update
 sudo apt-get -y install nginx
-echo "holberton school" | sudo tee /var/www/html/index.html
-sudo service nginx restart
+echo 'holberton school' | sudo tee /var/www/html/hs.html
+sudo service nginx start
