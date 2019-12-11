@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # we have had help
+sudo service apache2 start
 sed -i 's/#ServerName www.example.com/ServerName  localhost/g' "/etc/apache2/sites-available/000-default.conf"
-sudo service apache2 restart
+
