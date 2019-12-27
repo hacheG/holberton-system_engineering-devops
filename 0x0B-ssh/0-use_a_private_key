@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#again ssh yeeeii so fun
+ssh -i ~/.ssh/holberton ubuntu@35.237.238.105
