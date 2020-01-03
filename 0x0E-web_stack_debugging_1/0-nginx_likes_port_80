@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 #oh great more f**k devOps yeeeiii
 
+sed -i 's/8080/80/g' /etc/nginx/sites-available/default
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sudo service nginx restart
 
