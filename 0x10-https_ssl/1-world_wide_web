@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
 # booooooring
-if [ -z "$2" ]
-then
-    function "$1" "www"
-    function "$1" "lb-01"
-    function "$1" "web-01"
-    function "$1" "web-02"
-else
-    function "$1" "$2"
-fi
-
 function ()
 {
-    options=(+nocmd +nocomments +nostats +noquestion)
-    dig "${options[@]}" "$2.$1" | awk -v var="$2" '{print "The subdomain " var " is a " $4 " record and points to", $5}'
+    domain="$1"
+    subdomain="$2"
+    dig "$subdomain.$domain" | awk '/ANSWER SECTION:/{getline; printf "The subdomain %s is a %s record and points to %s\n", var, $4, $5}' var="$subdomain"
 }
+
+for subdomain in "www" "lb-01" "web-01" "web-02"
+do
+    if [ -z "$2" ] || [ "$2" == "$subdomain" ] ;
+    then
+	function "$1" "$subdomain"
+    fi
+done
