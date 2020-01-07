@@ -1,21 +1,9 @@
 #!/usr/bin/env bash
-# booooooring
+# booooooring so much
 
-print_subs()
-{
-    DOM=$1
-    SUB=$2
-    if [ "$DOM" ] && [ "$SUB" ]
-    then
-	dig $SUB.$DOM | grep -A1 'ANSWER SECTION:' | grep -v 'ANSWER SECTION:' | awk -v s="$SUB" '{print "The subdomain "s" is a "$4" record and points to "$5""}' 
-    elif [ "$DOM" ]
-    then
-	for subs in www web-01 web-02 lb-01;
-        do
-	    dig $subs."$DOM" | grep -A1 'ANSWER SECTION:' | grep -v 'ANSWER SECTION:' | awk -v s="$subs" '{print "The subdomain "s" is a "$4" record and points \
-to "$5""}'
-	done
-    fi
-}
-print_subs $1 $2
-exit 0
+if [ $# -eq 1 ]; then
+	domains="www.$1 lb-01.$1 web-01.$1 web-02.$1"
+else
+	domains="$2.$1"
+fi
+dig $domains | awk '/ANSWER SECTION:/ { getline; split($1, a, "."); print "The subdomain", a[1], "is a", $4, "record and points to", $5}'
