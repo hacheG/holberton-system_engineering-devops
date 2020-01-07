@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# booooooring
+if [ -z "$2" ]
+then
+    function "$1" "www"
+    function "$1" "lb-01"
+    function "$1" "web-01"
+    function "$1" "web-02"
+else
+    function "$1" "$2"
+fi
+
+function ()
+{
+    options=(+nocmd +nocomments +nostats +noquestion)
+    dig "${options[@]}" "$2.$1" | awk -v var="$2" '{print "The subdomain " var " is a " $4 " record and points to", $5}'
+}
