@@ -18,3 +18,4 @@ to "$5""}'
     fi
 }
 print_subs $1 $2
+exit 0
