@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # hello f**king new day
-sudo -su "$1"
+sudo -u "$1"
 whoami
