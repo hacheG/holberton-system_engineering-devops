@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+#yo no programo, yo hago pasteleria
+
+mysqldump -u root -p $@ > backup.sql
+tar -czvf $(date +%d-%m-%Y).tar.gz backup.sql
