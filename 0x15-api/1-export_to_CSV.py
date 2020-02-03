@@ -8,12 +8,14 @@ if __name__ == "__main__":
 
     numTaskCompĺete = 0
     theNumId = argv[1]
-    
-    r = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(theNumId))
+
+    r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
+                     .format(theNumId))
     showJson = r.json()
     oneId = showJson.get('username')
 
-    r2 = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'.format(theNumId))
+    r2 = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'
+                      .format(theNumId))
     showJson2 = r2.json()
 
     theNumId = int(theNumId)
@@ -24,7 +26,6 @@ if __name__ == "__main__":
             theTitle = json.get('title')
             if json.get('completed') is not None:
                 file = open("{}.csv".format(theNumId), "a")
-                file.write('"{}","{}","{}","{}"\n'.format(theUserId, oneId, completedTF, theTitle))
-  
+                file.write('"{}","{}","{}","{}"\n'
+                           .format(theUserId, oneId, completedTF, theTitle))
     file.close()
-
