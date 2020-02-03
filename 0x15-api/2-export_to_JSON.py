@@ -32,5 +32,5 @@ if __name__ == "__main__":
 
     dict_2_Json = {theNumId: listToJson}
 
-    with open('{}.json'.format(theNumId), "w") as j:
+    with open('{}.json'.format(theNumId), "w", encoding="utf-8") as j:
         json.dump(dict_2_Json, j)
