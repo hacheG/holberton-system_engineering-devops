@@ -31,7 +31,7 @@ if __name__ == "__main__":
         dictToJson["completed"] = completedTF
         listToJson.append(dictToJson)
 
-    dict_2_Json = {theNumId: listToJson}
+    dict_2_Json = {theUserId: listToJson}
 
-    with open('{}.json'.format(theNumId), "w") as j:
+    with open('{}.json'.format(ttheUserId), "w") as j:
         json.dump(dict_2_Json, j)
