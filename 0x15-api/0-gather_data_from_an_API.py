@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""a day more for die"""
+"""
+a day more for die
+"""
 
 import requests
 from sys import argv
