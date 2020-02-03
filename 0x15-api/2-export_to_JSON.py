@@ -7,7 +7,6 @@ import json
 
 if __name__ == "__main__":
 
-    numTaskCompĺete = 0
     theNumId = argv[1]
 
     r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
