@@ -9,12 +9,14 @@ if __name__ == "__main__":
 
     numTaskCompĺete = 0
     theNumId = argv[1]
-    
-    r = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(theNumId))
+
+    r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
+                     .format(theNumId))
     showJson = r.json()
     theUserName = showJson.get('username')
 
-    r2 = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'.format(theNumId))
+    r2 = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'
+                      .format(theNumId))
     showJson2 = r2.json()
 
     listToJson = []
@@ -28,8 +30,8 @@ if __name__ == "__main__":
         dictToJson["task"] = theTitle
         dictToJson["completed"] = completedTF
         listToJson.append(dictToJson)
-    
-    dict_2_Json = {theNumId : listToJson}
+
+    dict_2_Json = {theNumId: listToJson}
 
     with open('{}.json'.format(theNumId), "w") as j:
         json.dump(dict_2_Json, j)
