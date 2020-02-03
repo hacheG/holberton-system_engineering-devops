@@ -12,7 +12,7 @@ if __name__ == "__main__":
     r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
                      .format(theNumId))
     showJson = r.json()
-    oneId = showJson.get('name')
+    theName = showJson.get('name')
 
     r2 = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'
                       .format(theNumId))
@@ -22,11 +22,13 @@ if __name__ == "__main__":
     for json in showJson2:
         if json.get('completed') is True:
             numTaskCompĺete = numTaskCompĺete + 1
+            task_list += "\t" + json.get("title") + "\n"
 
     r3 = requests.get('https://jsonplaceholder.typicode.com/posts/{}'
                       .format(theNumId))
     comment = r3.json()
     bodyComment = comment.get('body')
 
-    print ('Employee {} is done with task {}/{}:\n{} '
-           .format(oneId, numTaskCompĺete, numberJson, bodyComment))
+    print ('Employee {} is done with tasks {}/{}:'
+           .format(theName, numTaskCompĺete, numberJson))
+    print(task_list[:-1])
