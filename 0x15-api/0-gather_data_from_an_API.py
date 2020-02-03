@@ -7,6 +7,8 @@ from sys import argv
 if __name__ == "__main__":
 
     numTaskCompĺete = 0
+    totalUserId2 = 0
+    totalTrue = 0
     theNumId = argv[1]
 
     r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
@@ -17,18 +19,19 @@ if __name__ == "__main__":
     r2 = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'
                       .format(theNumId))
     showJson2 = r2.json()
-    numberJson = len(showJson2)
 
-    for json in showJson2:
-        if json.get('completed') is True:
-            numTaskCompĺete = numTaskCompĺete + 1
-            task_list += "\t" + json.get("title") + "\n"
-
-    r3 = requests.get('https://jsonplaceholder.typicode.com/posts/{}'
-                      .format(theNumId))
-    comment = r3.json()
-    bodyComment = comment.get('body')
+    theNumId = int(theNumId)
+    for q in showJson2:
+        if q.get("userId") == theNumId:
+            totalUserId2 = totalUserId2 + 1
+            theTrue = q.get("completed")
+            if theTrue is True:
+                totalTrue = totalTrue + 1
 
     print ('Employee {} is done with tasks {}/{}:'
-           .format(theName, numTaskCompĺete, numberJson))
-    print(task_list[:-1])
+           .format(theName, totalTrue, totalUserId2))
+    for q in showJson2:
+        if q.get("userId") == theNumId:
+            theTrue = q.get("completed")
+            if theTrue is True:
+                print (q.get("title"))
