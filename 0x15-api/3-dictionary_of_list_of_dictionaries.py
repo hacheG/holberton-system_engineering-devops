@@ -28,4 +28,3 @@ def get_all_tasks():
 if __name__ == '__main__':
     with open('todo_all_employees.json', 'w') as json_file:
         json.dump(get_all_tasks(), json_file)
-© 2020 GitHub, In
