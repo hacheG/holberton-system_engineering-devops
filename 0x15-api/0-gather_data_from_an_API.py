@@ -2,32 +2,31 @@
 """
 a day more for die
 """
+
 import requests
 from sys import argv
-if __name__ == "__main__":
-    numTaskCompĺete = 0
-    totalUserId2 = 0
-    totalTrue = 0
-    theNumId = argv[1]
-    r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
-                     .format(theNumId))
-    showJson = r.json()
-    theName = showJson.get('name')
-    r2 = requests.get('https://jsonplaceholder.typicode.com/users/{}/todos'
-                      .format(theNumId))
-    showJson2 = r2.json()
 
-    theNumId = int(theNumId)
-    for q in showJson2:
-        if q.get("userId") == theNumId:
-            totalUserId2 = totalUserId2 + 1
-            theTrue = q.get("completed")
-            if theTrue is True:
-                totalTrue = totalTrue + 1
-    print ('Employee {} is done with tasks {}/{}:'
-           .format(theName, totalTrue, totalUserId2))
-    for q in showJson2:
-        if q.get("userId") == theNumId:
-            theTrue = q.get("completed")
-            if theTrue is True:
-                print (q.get("title"))
+
+def get_employee_tasks(user_id):
+    '''Retrieves employees and tasks'''
+    url = 'https://jsonplaceholder.typicode.com/'
+    user_req = url + 'users/{}'.format(user_id)
+    employee = requests.get(user_req).json()
+    task_req = url + 'todos?userId={}'.format(employee.get('id'))
+    tasks = requests.get(task_req).json()
+    return {"employee": employee, "tasks": tasks}
+
+
+def print_completed_tasks(data):
+    total = len(data.get('tasks'))
+    completed_tasks = [t for t in data.get('tasks') if t.get('completed')]
+    completed = len(completed_tasks)
+    print('Employee {} is done with tasks({}/{}):'
+          .format(data.get('employee').get('name'), completed, total))
+    for task in completed_tasks:
+        print('\t {}'.format(task.get('title')))
+
+
+if __name__ == '__main__':
+    data = get_employee_tasks(argv[1])
+    print_completed_tasks(data)
