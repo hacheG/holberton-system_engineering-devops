@@ -2,9 +2,12 @@
 """
 a day more for die
 """
+
 import requests
 from sys import argv
 import json
+
+
 if __name__ == "__main__":
     theNumId = argv[1]
     r = requests.get('https://jsonplaceholder.typicode.com/users/{}'
