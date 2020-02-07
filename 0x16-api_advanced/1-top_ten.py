@@ -12,4 +12,4 @@ def top_ten(subreddit):
             dataJson = r.json()['data']['children'][req]['data']['title']
             print (dataJson)
     else:
-        print (None)
+        print ("None")
