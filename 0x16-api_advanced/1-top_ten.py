@@ -9,8 +9,11 @@ def top_ten(subreddit):
     r = requests.get(url, headers=headers)
     if r.status_code == 200:
         dataJson = r.json()['data']['children']
+        counter = 0
         for req in dataJson:
-            dataTitle = req['data']['title']
-            print (dataTitle)
+            if counter == 10:
+                break
+            print (req['data']['title'])
+            counter = counter + 1
     else:
         print ("None")
