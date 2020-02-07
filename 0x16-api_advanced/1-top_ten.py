@@ -4,8 +4,7 @@ import requests
 
 
 def top_ten(subreddit):
-    final = 10
-    url = 'https://www.reddit.com/r/{}/hot.json?limit={}'.format(subreddit, final)
+    url = 'https://www.reddit.com/r/{}/hot.json?limit=10'.format(subreddit)
     headers = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64)'}
     r = requests.get(url, headers=headers)
     if r.status_code == 200:
